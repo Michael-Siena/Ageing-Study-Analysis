@@ -3,7 +3,6 @@ close all; clearvars; clc;  % closes all other matlab windows, clears all variab
 dirActive = matlab.desktop.editor.getActive; % get dir of open file
 cd(fileparts(dirAc/tive.Filename)); % assign active dir to cd
 addpath(genpath('./Functions/')); % adds path for Functions directory
-addpath(genpath('./Classes/')); % adds path for Classes directory
 
 ChanceDistribution = readtable('ChanceDistribution/ChanceDistribution10k.csv');
 [nChanceCoords, ~] = size(ChanceDistribution);
