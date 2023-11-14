@@ -1,11 +1,11 @@
 %% This script scores the raw data from the spatial memory task
 
-%% Prepare MATLAB environment
+%% CLEAN MATLAB ENVIRONMENT
 close all; clearvars; clc;  % closes all other matlab windows, clears all variables in the workspace, and clears the command window.
 dirActive = matlab.desktop.editor.getActive; % get dir of open file
 cd(fileparts(dirAc/tive.Filename)); % assign active dir to cd
-addpath(genpath('./Functions/')); % adds path for Functions directory
 
+%% READ IN DATA AND INITIALISE
 ChanceDistribution = readtable('ChanceDistribution/ChanceDistribution10k.csv');
 [nChanceCoords, ~] = size(ChanceDistribution);
 
@@ -41,7 +41,7 @@ aSwitchGuessCount = 0;
 eStayGuessCount = 0;
 eSwitchGuessCount = 0;
 
-%% Scoring
+%% SCORING
 results = cell(nTargetCoords, 2);
 tmpChanceDistances = cell(nChanceCoords, 1);
 for targetCoord = 1:nTargetCoords
@@ -108,6 +108,7 @@ eSwitchResps = [results{matches([results{:, 1}], "eSwitch"), 2}];
 aStayResps = [results{matches([results{:, 1}], "aStay"), 2}];
 aSwitchResps = [results{matches([results{:, 1}], "aSwitch"), 2}];
 
+%% OUTPUT
 %% Mean Placement Distance (PD)
 eStayPD = mean(ResponseData.PlacementDistance(matches([results{:, 1}], "eStay") & ~isnan([results{:, 2}])), 'omitnan');
 eSwitchPD = mean(ResponseData.PlacementDistance(matches([results{:, 1}], "eSwitch") & ~isnan([results{:, 2}])), 'omitnan');
@@ -140,3 +141,12 @@ disp("--------------");
 
 disp("Guess Counts:");
 disp(['eStay:' num2str(eStayGuessCount) ' | eSwitch:' num2str(eSwitchGuessCount) ' | aStay:' num2str(aStayGuessCount) ' | aSwitch:' num2str(aSwitchGuessCount)])
+
+
+%% LOCAL FUNCTIONS 
+function distance = EuclideanDistance(x0, y0, x1, y1)
+    dX = x1 - x0;
+    dY = y1 - y0;
+    
+    distance = sqrt((dX * dX) + (dY * dY));
+end
