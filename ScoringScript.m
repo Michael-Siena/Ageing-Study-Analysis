@@ -142,7 +142,6 @@ disp("--------------");
 disp("Guess Counts:");
 disp(['eStay:' num2str(eStayGuessCount) ' | eSwitch:' num2str(eSwitchGuessCount) ' | aStay:' num2str(aStayGuessCount) ' | aSwitch:' num2str(aSwitchGuessCount)])
 
-
 %% LOCAL FUNCTIONS 
 function distance = EuclideanDistance(x0, y0, x1, y1)
     dX = x1 - x0;
