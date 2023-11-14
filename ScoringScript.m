@@ -1,3 +1,5 @@
+%% This script scores the raw data from the spatial memory task
+
 %% Prepare MATLAB environment
 close all; clearvars; clc;  % closes all other matlab windows, clears all variables in the workspace, and clears the command window.
 dirActive = matlab.desktop.editor.getActive; % get dir of open file
