@@ -78,7 +78,7 @@ for targetCoord = 1:nTargetCoords
             aSwitchGuessCount = aSwitchGuessCount + 1;
         end
 
-        results{targetCoord, 2} = NaN; % is effectively = 0 in the analysis
+        results{targetCoord, 2} = NaN; % is effectively 0 in the analysis
 
         continue
     end
