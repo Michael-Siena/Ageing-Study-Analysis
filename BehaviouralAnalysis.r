@@ -60,6 +60,7 @@ for (pkgName in pkgNames)
    {
       install.packages(pkgName)
    }
+   library(pkgName, character.only = TRUE)
 }
 
 #  CUSTOM FUNCTIONS / OPERATORS ----
