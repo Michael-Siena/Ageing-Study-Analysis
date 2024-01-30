@@ -548,7 +548,7 @@ anova(mm_Gauss_RT_fin,
       mm_GammaIdent_RT_fin,
       mm_InvGaussIdent_RT_fin)
 
-#  SENSITIVITY ANALYSES ----
+#  SENSITIVITY ANALYSIS ----
 # removing outliers from MS model
 mm_Gauss_MS_noOtlrs <- lmer(formula = value ~ grp * perspective * switchStatus + (1 | ID),
                             data = long_all_MS |>
