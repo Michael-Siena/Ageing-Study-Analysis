@@ -957,37 +957,6 @@ estimate_contrasts(model = mm_Gauss_MS_fin,
                    method = "pairwise", 
                    adjust = "none")
 
-# POWER ----
-nRepMeas <- 4
-nGrps <- 2
-nSubsPerGrp <- 64
-nSubs <- nGrps * nSubsPerGrp
-artificial_data <- expand.grid(MS = (1:4), ID = (1:nSubs))
-artificial_data["grp"] <- c(rep(-0.5, nSubsPerGrp * nRepMeas), 
-                            rep(0.5, nSubsPerGrp * nRepMeas)) |> 
-   factor()
-artificial_data["perspective"] <- rep(c(-0.5, -0.5, 0.5, 0.5), nSubs) |> 
-   factor()
-artificial_data["switchStatus"] <- rep(c(-0.5, 0.5, -0.5, 0.5), nSubs) |> 
-   factor()
-
-fixed_effects <- c(0.5, 0.05, -0.10, 0.05, 0.05, 0.025, -0.025, -0.025) # need one for each cond
-random_variance <- list(0.1)
-
-formula <- formula(MS ~ grp * perspective * switchStatus + (1 | ID))
-
-artificial_glmer <- simr::makeGlmer(formula,
-                                    fixef = fixed_effects,
-                                    VarCorr = random_variance,
-                                    family = "gaussian",
-                                    data = artificial_data)
-artificial_glmer |> summary()
-
-power_simr <- simr::powerSim(fit = artificial_glmer,
-                             test = fixed("grp:perspective", "s"),
-                             nsim = 100)
-
-
 # PARIETAL COORDINATES FOR VBM ANALYSIS ----
 # Coordinates from a widely-cited review of functional neuromaging evidence of 
 # precuneus function - https://academic.oup.com/brain/article/129/3/564/390904.
