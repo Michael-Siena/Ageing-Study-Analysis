@@ -1,5 +1,4 @@
 % Removes any pixel with white color value (i.e. [1 1 1]) from the raw object image files
-
 close all; clearvars; clc;  % closes all other matlab windows, clears all variables in the workspace, and clears the command window.
 dirActive = matlab.desktop.editor.getActive; % get dir of open file
 cd(fileparts(dirActive.Filename)); % assign active dir to cd
