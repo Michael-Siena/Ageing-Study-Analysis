@@ -4,6 +4,7 @@
 close all; clearvars; clc;  % closes all other matlab windows, clears all variables in the workspace, and clears the command window.
 dirActive = matlab.desktop.editor.getActive; % get dir of open file
 cd(fileparts(dirAc/tive.Filename)); % assign active dir to cd
+addpath(genpath('./Functions/')); % adds path for Functions directory
 
 %% READ IN DATA AND INITIALISE
 ChanceDistribution = readtable('ChanceDistribution/ChanceDistribution10k.csv');
@@ -141,11 +142,3 @@ disp("--------------");
 
 disp("Guess Counts:");
 disp(['eStay:' num2str(eStayGuessCount) ' | eSwitch:' num2str(eSwitchGuessCount) ' | aStay:' num2str(aStayGuessCount) ' | aSwitch:' num2str(aSwitchGuessCount)])
-
-%% LOCAL FUNCTIONS 
-function distance = EuclideanDistance(x0, y0, x1, y1)
-    dX = x1 - x0;
-    dY = y1 - y0;
-    
-    distance = sqrt((dX * dX) + (dY * dY));
-end
