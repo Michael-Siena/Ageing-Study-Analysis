@@ -87,8 +87,8 @@ for targetCoord = 1:nTargetCoords
     nLessThanPlacementDist = 0;
     tmpChanceDistances = cell(nChanceCoords);
     for chanceCoord = 1:nChanceCoords
-        tmpChanceDistances{chanceCoord} = EuclideanDistance(ChanceDistribution.ChanceDistX(chanceCoord), ChanceDistribution.ChanceDistZ(chanceCoord),... 
-                                                            ResponseData.TargetX(targetCoord), ResponseData.TargetZ(targetCoord));
+        tmpChanceDistances{chanceCoord} = eucliddist(ChanceDistribution.ChanceDistX(chanceCoord), ChanceDistribution.ChanceDistZ(chanceCoord),... 
+                                                    ResponseData.TargetX(targetCoord), ResponseData.TargetZ(targetCoord));
     
         if (tmpChanceDistances{chanceCoord} < ResponseData.PlacementDistance(targetCoord))                                                
             nLessThanPlacementDist = nLessThanPlacementDist + 1;
