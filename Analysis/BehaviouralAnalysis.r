@@ -956,33 +956,3 @@ estimate_contrasts(model = mm_Gauss_MS_fin,
                    at = c("perspective", "switchStatus"), 
                    method = "pairwise", 
                    adjust = "none")
-
-# PARIETAL COORDINATES FOR VBM ANALYSIS ----
-# Coordinates from a widely-cited review of functional neuromaging evidence of 
-# precuneus function - https://academic.oup.com/brain/article/129/3/564/390904.
-#
-# Note that these coordinates are for left precuneus and in Talairach coordinates
-imageryPrecCoords <- list(x = c(-10, -18, -4, -3, -8, -18, -17, -23, -18, -14, -1, -4),
-                          y = c(-52, -70, -52, -74, -78, -53, -59, -61, -58, -70, -60, -82),
-                          z = c(68, 69, 52, 34, 36, 54, 54, 51, 55, 28, 38, 40))
-avgImageryPrecCoord <- lapply(imageryPrecCoords, mean) # MNI: -12, -68, 53
-
-retrievalPrecCoords <- list(x = c(-14, -6, -2, 0, -8, -6, -12, 0),
-                            y = c(-58, -68, -54, -66, -76, -76, -64, -64),
-                            z = c(32, 36, 32, 33, 32, 28, 46, 44))
-avgRetrievalPrecCoords <- lapply(retrievalPrecCoords, mean) # MNI: -6, -66, 35
-
-selfPrecCoords <- list(x = c(-3, -6, 0, -4, -10, 0, 0, -6, -4, -6),
-                       y = c(-47, -53, -56, -52, -48, -48, -66, -58, -64, -60),
-                       z = c(31, 31, 56, 24, 64, 33, 34, 50, 32, 30))
-avgSelfPrecCoords <- lapply(selfPrecCoords, mean) # MNI: -5, -58, 42
-
-avgPrecCoords <- list(x = mean(c(avgImageryPrecCoord$x, # MNI: -8, -66, 45
-                                 avgRetrievalPrecCoords$x,
-                                 avgSelfPrecCoords$x)),
-                      y = mean(c(avgImageryPrecCoord$y, 
-                                 avgRetrievalPrecCoords$y,
-                                 avgSelfPrecCoords$y)),
-                      z = mean(c(avgImageryPrecCoord$z, 
-                                 avgRetrievalPrecCoords$z,
-                                 avgSelfPrecCoords$z)))
